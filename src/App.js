@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
+import CartComponent from "./Components/CartComponent";
+import HeaderComponent from "./Components/HeaderComponent";
+import SideBarComponent from "./Components/SideBarComponent";
+import CategoriesScreen from "./Screens/CategoriesScreen";
+import { Grid } from 'semantic-ui-react'
+import './App.css'
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   <HeaderComponent/>
+   {/* <Grid columns={3}>
+    <Grid.Row>
+   <Grid.Column> <SideBarComponent/></Grid.Column>
+   <Grid.Column>  <CategoriesScreen/></Grid.Column>
+   <Grid.Column> <CartComponent/></Grid.Column>
+  
+ 
+  
+   </Grid.Row>
+   </Grid> */}
+  
+  <div className="e-commerce">
+    <div><SideBarComponent/></div>
+    <div> <CategoriesScreen/></div>
+    <div style={{margin:"19px"}}><CartComponent/></div>
+  </div>
     </div>
   );
 }

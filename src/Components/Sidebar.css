@@ -1,0 +1,18 @@
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: fit-content;
+    box-shadow: 0px 0px 4px 0px;
+   background-color: #ffffff;
+   position: relative;
+   top: 20px;
+   left: 5px;
+}
+.ui.label{
+    background-color: #ffffff;
+}
+.sidbar-label{
+    padding: 20px !important;
+    cursor: pointer;
+}

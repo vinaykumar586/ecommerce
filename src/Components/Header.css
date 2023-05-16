@@ -1,0 +1,38 @@
+.header-ui {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 10px;
+    background-color: #ffffff;
+}
+.logo {
+    height: 54px;
+    margin-top: 0.70835em !important;
+}
+.header-input {
+    display: flex !important;
+    height: 6vh;
+    margin-top: 10px;
+    width: 40vw;
+    font-size: 1rem !important;
+}
+.ui.items>.item>.image>img{
+    width: 50%;
+    border-radius: 24px;
+}
+.ui.items {
+     margin: 0;
+     margin-top: 10px !important;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px){
+.ui.items>.item>.image:not(.ui) {
+    width: 150px;
+}
+}
+@media only screen and (max-width: 767px){
+.ui.items:not(.unstackable)>.item>.image, .ui.items:not(.unstackable)>.item>.image>img {
+    max-width: 150px!important;
+    width: 100px !important;
+    max-height: 250px ;
+}
+}
