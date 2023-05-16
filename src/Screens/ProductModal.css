@@ -1,0 +1,29 @@
+.color-des{
+    padding:10px;
+    border: 1px solid black;
+    margin:10px;
+    
+    cursor: pointer;
+}
+.active {
+    background:rgb(247, 153, 153);
+  }
+.active-package{
+    background:rgb(247, 153, 153);
+}
+.pacakage-map{
+    /* height: 49vh; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.colors-map {
+    /* height: 49vh; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.modal{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

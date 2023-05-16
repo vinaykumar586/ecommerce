@@ -6,3 +6,8 @@
   margin:0;
     background-color: #ffffff;
 }
+.add-cart {
+  height: 6vh;
+  position: relative;
+  left: 60px;
+}

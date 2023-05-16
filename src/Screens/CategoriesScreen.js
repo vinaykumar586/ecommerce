@@ -7,7 +7,7 @@ import CardComponent from './CardComponent';
 import "./Card.css"
 import SubCardComponent from './SubCardComponent';
 import ProductScreen from './ProductScreen';
-function CategoriesScreen() {
+function CategoriesScreen({cartDetails,setCartDetails}) {
     const dispatch=useDispatch();
     const categories = useSelector((state)=>state.category.categories)
     const subCategories = useSelector((state)=>state.category.subCategories)
@@ -47,7 +47,7 @@ function CategoriesScreen() {
 
 {
   productScreen &&(
-    <ProductScreen/>
+    <ProductScreen cartDetails={cartDetails} setCartDetails={setCartDetails}/>
 
   )
 }
