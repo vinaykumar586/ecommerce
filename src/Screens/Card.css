@@ -23,3 +23,6 @@
     margin: 10px;
     border-radius: 9%;
 }
+.active-cate{
+    border: 2px solid red;
+}
