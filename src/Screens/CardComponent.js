@@ -14,7 +14,7 @@ let cate=null
 // cate=e.target;
 // }
   return (
-    <div className='card' onClick={(e)=>{dispatch(getSubCategories(item.categoryId)); CatgorySelect(e)}}>
+    <div className='card' onClick={(e)=>{dispatch(getSubCategories(item.categoryId))}}>
         <img src={image} style={{width:"120px"}}/>
         <div className='category-name'>{title}</div>
     </div>
