@@ -1,7 +1,11 @@
 import React from 'react'
-import { Grid, GridColumn, Image,Button,Icon } from 'semantic-ui-react'
+import { Grid, GridColumn, Image,Button,Icon } from 'semantic-ui-react';
+
 import "./Cart.css"
-function CartComponent({cartDetails}) {
+import { useSelector } from 'react-redux';
+function CartComponent({cartDetails,setCartDetails}) {
+  const productScreen=useSelector((state)=>state.category.productScreen)
+
   return (
     <>
  <Grid columns={3}>
@@ -22,7 +26,10 @@ function CartComponent({cartDetails}) {
   
 
  </Grid>
- <Button positive className='add-cart'>Add To Cart</Button>
+ <div style={{position:"relative", float:"right",  margin:'10px'}}>
+ <button style={{color:"green"}} >Add To Cart</button>
+  <button style={{color:"red"}} onClick={()=>{setCartDetails([])}}>Clear cart</button>
+  </div>
  </>
   )
 }

@@ -11,7 +11,7 @@ function ProdcutModal({open,setOpen,item,cartDetails,setCartDetails}) {
     quantity:1,
     color:null,
     package:null,
-    price:null
+    price:item.variants[0].grossPrice
  });
 let colorDescriptions = item.variants.map((it)=>it.colorDescription);
 colorDescriptions= [...new Set(colorDescriptions)]
@@ -86,16 +86,16 @@ const packageSelection =(e,val)=>{
         </div>
         <p>Enter Quantity</p>
         <input type="number" value={productDetails.quantity} defaultValue={1} name="quantity" onChange={(e)=>setProductDetails({...productDetails,[e.target.name]:e.target.value, price:item.variants[0].grossPrice*e.target.value})}/>
-        <Button color="orange" onClick={()=>{setCartDetails([...cartDetails,productDetails])}}>Add</Button>
+        <Button style ={{display:"block"}}negative color="orange" onClick={()=>{setCartDetails([...cartDetails,productDetails])}}>Add</Button>
    
       </div>
       <Divider vertical/>
       <div style={{padding:"10px"}}>
-        <CartComponent cartDetails={cartDetails}/>
+        <CartComponent cartDetails={cartDetails} setCartDetails={setCartDetails}/>
       </div>
       </div>
       <Modal.Actions>
-        <Button negative onClick={() => setOpen(!open)}>Cancel</Button>
+        <Button style ={{display:"block"}}negative onClick={() => setOpen(!open)}>Cancel</Button>
       </Modal.Actions>
     </Modal>
   )

@@ -18,7 +18,6 @@ function CategoriesScreen({cartDetails,setCartDetails}) {
       if(!productScreen){
         dispatch(getCategories())
       }
-    
     },[])
   return (
     <div style={{margin:"18px"}}>
