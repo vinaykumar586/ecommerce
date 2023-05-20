@@ -31,15 +31,16 @@ console.log(products)
                     )
                     
                 }
+            
             </div>
+           
             {
-              products.length<0 &&(
+              products.length<=0 &&(
                 <div>
-                <h4>No Products Are There Under This Category</h4>
+                <span>No Products Are There Under This Category</span>
                 </div>
               )
             }
-           
          </Header>
          {
   productScreen && (<Header as='h2' attached='top'>
