@@ -9,7 +9,7 @@ function HeaderComponent() {
    <Input icon="search" iconPosition='left' placeholder="search" className='header-input'/>
    <Item.Group>
    <Item>
-    <Item.Image src={require("./../Images/At.png")}></Item.Image>
+    <Item.Image class ="header-image"src={require("./../Images/At.png")} width="20" height="20"></Item.Image>
     <Item.Content style={{fontSize: '0.8rem'}}>
         <Item.Header>Vinaykumar</Item.Header>
         <Item.Meta>

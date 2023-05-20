@@ -2,4 +2,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 38px;
+  height: 80vh;
+}
+.cart-comp {
+  height: 90%;
+  position: relative;
+  right: 22px;
 }

@@ -7,20 +7,30 @@ import CardComponent from './CardComponent';
 import "./Card.css"
 import SubCardComponent from './SubCardComponent';
 import ProductScreen from './ProductScreen';
-function CategoriesScreen({cartDetails,setCartDetails}) {
+function CategoriesScreen({cartDetails,setCartDetails,open,setOpen}) {
     const dispatch=useDispatch();
     const categories = useSelector((state)=>state.category.categories)
     const subCategories = useSelector((state)=>state.category.subCategories)
     const productScreen=useSelector((state)=>state.category.productScreen)
     console.log(categories,subCategories
         )
+        const[activeId,setActiveId]=useState(null);
+        const[subId,setSubId]=useState(null);
+
     useEffect(()=>{
       if(!productScreen){
         dispatch(getCategories())
       }
+      if(categories.length>0){
+        setActiveId(categories[0].categoryId)
+
+      }
+      if(subCategories.length>0){
+        setSubId(subCategories.subCategoryId)
+      }
     },[])
   return (
-    <div style={{margin:"18px"}}>
+    <div style={{height:'90%'}}>
       {
         !productScreen && (
       
@@ -29,24 +39,31 @@ function CategoriesScreen({cartDetails,setCartDetails}) {
   <div className='category-card'>
   {
     categories.length>0 ? categories.map((item,id)=>
-         <CardComponent item={item} image={item.categoryImageURL} title={item.categoryName}/>
+         <CardComponent item={item} image={item.categoryImageURL} title={item.categoryName} activeId={activeId}setActiveId={setActiveId}/>
     ):<h1>Loadinmg</h1>
   }
         </div>
         <Divider/>
         <div className='category-card'>
     {
-        subCategories.length>0 ? (subCategories.map((item,id)=>
-        <SubCardComponent item={item} image={item.subCategoryImageURL} title={item.subCategoryName}/>)):
-        <h1>There is No subCategories</h1>
+        subCategories.length>0 && (subCategories.map((item,id)=>
+        <SubCardComponent item={item} sub={subId} setSubId={setSubId} image={item.subCategoryImageURL} title={item.subCategoryName}/>))
     }
+  
    </div>
+   <div>
+   {
+      subCategories.length<=0 &&(
+        <span>There is no sub catrgoies There</span>
+      ) 
+    }
+    </div>
   </Header>
 )}
 
 {
   productScreen &&(
-    <ProductScreen cartDetails={cartDetails} setCartDetails={setCartDetails}/>
+    <ProductScreen  open={open} setOpen={setOpen} cartDetails={cartDetails} setCartDetails={setCartDetails}/>
 
   )
 }

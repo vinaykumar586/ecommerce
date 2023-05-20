@@ -12,25 +12,16 @@ function App() {
   const[cartDetails,setCartDetails]=useState([]);
   const subCategories = useSelector((state)=>state.category.subCategories)
   const productScreen=useSelector((state)=>state.category.productScreen)
-
+  const [open, setOpen] = useState(false)
   return (
     <div className="App">
+      <div style={{height:'9vh'}}>
    <HeaderComponent/>
-   {/* <Grid columns={3}>
-    <Grid.Row>
-   <Grid.Column> <SideBarComponent/></Grid.Column>
-   <Grid.Column>  <CategoriesScreen/></Grid.Column>
-   <Grid.Column> <CartComponent/></Grid.Column>
-  
- 
-  
-   </Grid.Row>
-   </Grid> */}
-  
+   </div>
   <div className="e-commerce">
     <div><SideBarComponent/></div>
-    <div> <CategoriesScreen cartDetails={cartDetails} setCartDetails={setCartDetails}/></div>
-    <div style={{margin:"19px"}}><CartComponent cartDetails={cartDetails} setCartDetails={setCartDetails}/></div>
+    <div> <CategoriesScreen open={open} setOpen={setOpen}cartDetails={cartDetails} setCartDetails={setCartDetails}/></div>
+    <div className="cart-comp"><CartComponent open={open} setOpen={setOpen} cartDetails={cartDetails} setCartDetails={setCartDetails}/></div>
   </div>
 
 {/* {

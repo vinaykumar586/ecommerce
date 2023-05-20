@@ -3,7 +3,8 @@ const initialState={
     categories:[],
     subCategories:[],
     products:[],
-    productScreen:false
+    productScreen:false,
+    finalCartDetails:[],
 }
 
 const Catgegoryreducer=(state=initialState,action)=>{
@@ -34,6 +35,11 @@ const Catgegoryreducer=(state=initialState,action)=>{
                             productScreen:false,
                             products:[]
                         }
+                case types.POST_FINAL_CART:
+                    return {
+                        ...state,
+                        finalCartDetails:action.payload
+                    }
             default:
                 return state;
     }
