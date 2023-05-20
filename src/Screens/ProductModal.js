@@ -9,39 +9,65 @@ function ProdcutModal({open,setOpen,item,cartDetails,setCartDetails}) {
     productName:item.itemDescription,
     image:item.productImages[0] || "https://i.pinimg.com/236x/a8/d4/57/a8d457a99271ce50a4cc537b4dd05e4b.jpg",
     quantity:1,
-    color:null,
-    package:null,
-    price:item.variants[0].grossPrice
+    color:"",
+    package:"",
+    price:item.variants[0].grossPrice,
+    id:item.subCategoryId,
+    productId:item.productId
  });
+ const [pack,setPack]=useState(null)
+ const[clr,setClr]=useState(null)
 let colorDescriptions = item.variants.map((it)=>it.colorDescription);
 colorDescriptions= [...new Set(colorDescriptions)]
 let packageDescription = item.variants.map((it)=>it.packingDescription);
 packageDescription = [...new Set(packageDescription)]
-let clr =null
+
 const colorSelection=(e,val)=>{
-    
+  setProductDetails({...productDetails,color:e.target.innerText})
+
     if(clr!==null && clr.classList.contains("active")) {
         console.log(clr.classList[1], clr[0])
       clr.classList.remove("active")
         // Remove .active CSS Class
       }
     e.target.classList.add('active');
-    clr =e.target;
-    // setProductDetails({...productDetails,color:val})
+    setClr(e.target);
   
       
       
 }
-let pack=null
-const packageSelection =(e,val)=>{
 
+const packageSelection =(e,val)=>{
+  setProductDetails({...productDetails,package:e.target.innerText})
+
+  console.log(e,val)
     if(pack!==null && pack.classList.contains("active-package")){
         pack.classList.remove("active-package")
     }
     e.target.classList.add("active-package")
-    pack=e.target;
-    // setProductDetails({...productDetails,package:val})
+    setPack(e.target);
 }
+const addToCart =()=>{
+  
+  if( pack!==null && pack.classList.contains("active-package")){
+    pack.classList.remove("active-package")
+    setPack(null)
+}
+if( clr!==null && clr.classList.contains("active")) {
+  console.log(clr.classList[1], clr[0])
+clr.classList.remove("active")
+setClr(null)
+
+
+}
+  setCartDetails([...cartDetails,productDetails])
+
+}
+const handleChange = (e)=>{
+    setProductDetails({...productDetails,[e.target.name]:e.target.value, price:item.variants[0].grossPrice*e.target.value})
+ 
+};
+
   return (
     <Modal
     closeIcon
@@ -85,13 +111,17 @@ const packageSelection =(e,val)=>{
         }
         </div>
         <p>Enter Quantity</p>
-        <input type="number" value={productDetails.quantity} defaultValue={1} name="quantity" onChange={(e)=>setProductDetails({...productDetails,[e.target.name]:e.target.value, price:item.variants[0].grossPrice*e.target.value})}/>
-        <Button style ={{display:"block"}}negative color="orange" onClick={()=>{setCartDetails([...cartDetails,productDetails])}}>Add</Button>
+        <input type="number"  min={1}value={productDetails.quantity} defaultValue={1} name="quantity" onChange={(e)=>{handleChange(e)}}/>
+       {
+        productDetails.quantity>=1 &&(
+<Button style ={{display:"block"}}negative color="orange" onClick={()=>{addToCart()}}>Add</Button>
+        ) 
+       } 
    
       </div>
       <Divider vertical/>
       <div style={{padding:"10px"}}>
-        <CartComponent cartDetails={cartDetails} setCartDetails={setCartDetails}/>
+        <CartComponent open={open} setOpen={setOpen}cartDetails={cartDetails} setCartDetails={setCartDetails}/>
       </div>
       </div>
       <Modal.Actions>
@@ -99,6 +129,6 @@ const packageSelection =(e,val)=>{
       </Modal.Actions>
     </Modal>
   )
-}
+      }
 
 export default ProdcutModal;

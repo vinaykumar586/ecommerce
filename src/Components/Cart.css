@@ -1,13 +1,53 @@
 .ui.grid {
   
-    height: 80vh;
+    height: 56vh;
     box-shadow: 0px 0px 9px 0px;
     width: 26vw;
   margin:0;
     background-color: #ffffff;
+    overflow-x:scroll ;
+    
 }
 .add-cart {
   height: 6vh;
   position: relative;
   left: 60px;
+}
+.header-sticky {
+  position: absolute;
+  height: 5vh;
+  top: 0;
+  z-index: auto;
+  background: #dddddd;
+}
+.ui.grid>.row{
+  justify-content: space-between !important;
+}
+.place-order{
+
+    padding: 4px;
+    width: 10vw;
+    margin: 10px;
+    background: #ef642e;
+    border: none;
+    cursor: pointer;
+}
+.clear-btn{
+
+  padding: 4px;
+  width: 10vw;
+  margin: 10px;
+  background: #df9faa;
+  border: none;
+  cursor: pointer;
+
+}
+.addcart-btn{
+  padding: 4px;
+  width: 10vw;
+  margin: 10px;
+  background: #1fa4d8;
+  border: none;
+  cursor: pointer;
+
 }

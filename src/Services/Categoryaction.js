@@ -55,3 +55,10 @@ export const screenChange=()=>(dispatch)=>{
         type:types.SCREEN_CHANGE
     })
 }
+
+export const finalCartData=(data)=>(dispatch)=>{
+    dispatch({
+        type:types.POST_FINAL_CART,
+        payload: data
+    })
+}
